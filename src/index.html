@@ -9,5 +9,46 @@
 </head>
 <body>
   <app-root></app-root>
+  
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Rendimiento', 'Bateria', 'Camaras', 'Audio'],
+        datasets: [{
+          label: 'Nº puntos',
+          data: [100, 100, 100, 100],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+  const datasets = productList.map(product => ({
+    label: product.nombre,
+    data: [product.rendimiento, product.bateria, product.camaras, product.audio],
+    fill: true,
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgb(255, 99, 132)',
+    pointBackgroundColor: 'rgb(255, 99, 132)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgb(255, 99, 132)'
+  }));
+  </script>
 </body>
 </html>
